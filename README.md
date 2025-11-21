@@ -94,7 +94,7 @@ All data is stored locally — no external database.
 ## 🧪 Development
 
 To modify UI:
-- Edit HTML/CSS/JS files inside the frontend folder (if included)
+- Edit HTML/CSS/JS files inside the frontend folder (if needed)
 - Customize JSON files for pricing/promos
 - Modify `server.js` to extend APIs or add endpoint logic
 
