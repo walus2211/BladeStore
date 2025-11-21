@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#cc0000">
+    <title>Blade: Volume I - When Stars Fall</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blood-red: #cc0000;
+            --dark-red: #8b0000;
+            --black: #0d0d0d;
+            --light-gray: #e0e0e0;
+            --crimson: #dc143c;
+            --shadow-red: rgba(204, 0, 0, 0.5);
+            --success-green: #00cc66;
+            --success-dark: #008040;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--black);
+            color: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        /* Background animations */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, #1a0000 0%, #0d0d0d 100%);
+        }
+        .lightning {
+            position: fixed;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.1s;
+            background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13,13,13,0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 3px solid var(--blood-red);
+            box-shadow: 0 5px 30px var(--shadow-red);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--blood-red);
+            text-shadow: 0 0 20px var(--blood-red);
+            letter-spacing: 3px;
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--blood-red);
+            transition: 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(13,13,13,0.98);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px;
+            gap: 2rem;
+            list-style: none;
+            transition: right 0.3s;
+            border-left: 3px solid var(--blood-red);
+        }
+        .nav-links.active {
+            right: 0;
+        }
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            padding: 10px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .nav-links a:active {
+            color: var(--blood-red);
+            border-bottom-color: var(--blood-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5% 50px;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 100%;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--blood-red);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px var(--blood-red), 3px 3px 0 #000;
+            letter-spacing: 8px;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--crimson);
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+            font-style: italic;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, var(--blood-red), var(--dark-red));
+            border: 3px solid var(--blood-red);
+            color: white;
+            cursor: pointer;
+            font-weight: 900;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 3px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 30px var(--shadow-red);
+        }
+        .cta-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Sections */
+        section { 
+            padding: 4rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto;
+        }
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--blood-red);
+            text-shadow: 0 0 20px var(--blood-red);
+            letter-spacing: 5px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .about-text { 
+            font-size: 1rem; 
+            line-height: 1.8; 
+        }
+        .about-text p { 
+            margin-bottom: 1.5rem;
+        }
+        .about-text .highlight { 
+            color: var(--blood-red); 
+            font-weight: 700; 
+        }
+        .about-visual {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            aspect-ratio: 3/4;
+            border: 4px solid var(--blood-red);
+            overflow: hidden;
+            box-shadow: 0 0 50px var(--shadow-red);
+        }
+        .about-visual img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        .author-box {
+            background: linear-gradient(135deg, rgba(139,0,0,0.2), rgba(204,0,0,0.1));
+            border-left: 5px solid var(--blood-red);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .author-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--blood-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 2rem; 
+        }
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border: 4px solid var(--blood-red);
+            overflow: hidden;
+            position: relative;
+            background: var(--black);
+        }
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(13,13,13,0.95), transparent);
+            padding: 1.5rem;
+        }
+        .gallery-item-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--blood-red);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Order Section */
+        .order-showcase { 
+            display: flex; 
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .book-cover {
+            width: 100%; 
+            max-width: 350px;
+            margin: 0 auto;
+            aspect-ratio: 3/4;
+            border: 4px solid var(--blood-red);
+            box-shadow: 0 20px 80px var(--shadow-red);
+            overflow: hidden;
+        }
+        .book-cover img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        .book-info h3 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 2rem; 
+            color: var(--blood-red); 
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px; 
+        }
+        .info-item { 
+            margin-bottom: 1.2rem; 
+            padding-bottom: 1rem; 
+            border-bottom: 2px solid rgba(204,0,0,0.2); 
+        }
+        .info-item h4 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            color: var(--crimson); 
+            font-size: 1.2rem; 
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px; 
+        }
+        .info-item p { 
+            color: var(--light-gray); 
+            line-height: 1.6; 
+            font-size: 0.95rem; 
+        }
+        .price-tag { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 2.5rem; 
+            color: var(--blood-red); 
+            margin: 1.5rem 0;
+            letter-spacing: 3px; 
+        }
+        .buy-btn { 
+            padding: 1.2rem 3rem; 
+            font-size: 1.3rem; 
+            background: linear-gradient(45deg, var(--blood-red), var(--dark-red)); 
+            border: 3px solid var(--blood-red); 
+            color: white; 
+            cursor: pointer; 
+            font-weight: 900; 
+            font-family: 'Bebas Neue', sans-serif; 
+            letter-spacing: 3px; 
+            transition: 0.3s; 
+            width: 100%;
+        }
+        .buy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Modal */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.95);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, rgba(13,13,13,0.98), rgba(26,0,0,0.98));
+            margin: 20px auto;
+            padding: 2rem 1.5rem;
+            border: 3px solid var(--blood-red);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 100px var(--blood-red);
+        }
+        .close-modal { 
+            position: absolute; 
+            right: 1rem; 
+            top: 1rem; 
+            font-size: 2rem; 
+            color: var(--blood-red); 
+            cursor: pointer;
+        }
+        .form-group { 
+            margin-bottom: 1.2rem; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 700; 
+            color: var(--blood-red); 
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px; 
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%; 
+            padding: 0.9rem; 
+            border: 2px solid var(--blood-red); 
+            background: rgba(0,0,0,0.5); 
+            color: var(--light-gray); 
+            font-size: 16px;
+            outline: none;
+        }
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus { 
+            border-color: var(--crimson);
+        }
+
+        /* Price Breakdown */
+        .price-breakdown {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--blood-red);
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        .price-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--blood-red);
+        }
+        .price-label { color: var(--light-gray); }
+        .price-value { color: var(--light-gray); font-weight: 600; }
+        .price-total { color: var(--blood-red) !important; font-weight: 900; }
+
+        /* Promo Message */
+        .promo-message {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            min-height: 1.2rem;
+        }
+        .promo-success { color: #00ff00; }
+        .promo-error { color: var(--blood-red); }
+
+        /* Success Popup */
+        .success-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            overflow-y: auto;
+        }
+        .success-content {
+            background: linear-gradient(135deg, rgba(13,13,13,0.98), rgba(0, 40, 0, 0.9));
+            border: 3px solid var(--success-green);
+            padding: 2rem 1.5rem;
+            max-width: 450px;
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+        }
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success-green);
+            margin-bottom: 1rem;
+        }
+        .success-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--success-green);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+        .success-message {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .order-details {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--success-dark);
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            text-align: left;
+        }
+        .order-detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        .order-detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .detail-label { font-weight: 700; color: var(--light-gray); }
+        .detail-value { color: var(--success-green); font-weight: 700; }
+        .close-success {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            color: var(--success-green);
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(13,13,13,0.95);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 3px solid var(--blood-red);
+            margin-top: 3rem;
+        }
+        .footer-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            color: var(--light-gray);
+            font-size: 1.3rem;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--blood-red);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tablet & Desktop */
+        @media (min-width: 768px) {
+            .logo { font-size: 2.5rem; letter-spacing: 5px; }
+            .menu-toggle { display: none; }
+            .nav-links {
+                position: static;
+                width: auto;
+                max-width: none;
+                height: auto;
+                background: transparent;
+                flex-direction: row;
+                padding: 0;
+                gap: 2.5rem;
+                border-left: none;
+            }
+            .nav-links a { font-size: 1.1rem; }
+            .hero h1 { font-size: 5rem; letter-spacing: 12px; }
+            .subtitle { font-size: 2rem; letter-spacing: 5px; }
+            .tagline { font-size: 1.4rem; }
+            h2 { font-size: 3.5rem; margin-bottom: 3rem; }
+            .about-content { flex-direction: row; gap: 4rem; }
+            .about-text { flex: 1; font-size: 1.1rem; }
+            .about-visual { flex: 1; max-width: 500px; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+            .order-showcase { flex-direction: row; gap: 4rem; }
+            .book-cover { max-width: 400px; }
+            .book-info { flex: 1; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 7rem; letter-spacing: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="lightning"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">BLADE</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#order">ORDER</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>BLADE</h1>
+            <p class="subtitle">VOLUME I</p>
+            <p class="tagline">"When the stars fell, the world shattered. Now, one boy stands between destruction and survival."</p>
+            <a href="#order" class="cta-btn">GET YOUR COPY NOW</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 data-aos="fade-up">THE AWAKENING</h2>
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <p><span class="highlight">Ruicr never wanted to be a hero.</span> But when a fiery apocalypse destroys his world and awakens a deadly power inside him, he's thrown into a battle that spans realms and shatters reality.</p>
+                <p>With fierce warriors like <span class="highlight">Puran</span> by his side, Ruicr must face gods, monsters, and forces beyond imagination. Ancient secrets rise, enemies strike without warning, and the fate of everything hangs on a razor's edge.</p>
+                <p><span class="highlight">Will Ruicr fight and conquer, or fall beneath the weight of destiny?</span></p>
+                <p><strong>Blade: Volume I</strong> delivers relentless action, intense battles, and jaw-dropping twists, inspired by <span class="highlight">Naruto, Bleach, Jujutsu Kaisen</span>, and more. Featuring epic fight scenes and smart references to your favorite anime and live-action stories, this is an adrenaline-packed ride from start to finish.</p>
+                <div class="author-box">
+                    <h3>About the Author</h3>
+                    <p><strong>Rupom</strong>, a Bangladeshi school student, began building the world of Blade at just 13 years old. Driven by a passion for action and adventure, he finished the first volume before turning 15.</p>
+                    <p style="margin-top: 1rem;"><em>"Skibidi Sigma."</em></p>
+                </div>
+            </div>
+            <div class="about-visual" data-aos="fade-left">
+                <img src="https://i.postimg.cc/Z53rq97c/COVER.jpg" alt="Blade Volume I Cover">
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 data-aos="fade-up">GALLERY</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="https://i.postimg.cc/D0rW1NDJ/1-ST.jpg" alt="Ruicr">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">RUICR</div>
+                    <p>The protagonist with awakened powers</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="https://i.postimg.cc/KYTmKMCH/2-ND.jpg" alt="Shattered Realms">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">SHATTERED REALMS</div>
+                    <p>The fragmented world of Blade</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="https://i.postimg.cc/yYrKvjHp/3-RD.jpg" alt="Epic Battles">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">EPIC BATTLES</div>
+                    <p>Intense combat sequences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order">
+        <h2 data-aos="fade-up">GET YOUR COPY</h2>
+        <div class="order-showcase" data-aos="fade-up">
+            <div class="book-display">
+                <div class="book-cover">
+                    <img src="https://i.postimg.cc/DyG6MyVp/COVER-2.jpg" alt="Blade Volume I Book Cover">
+                </div>
+            </div>
+            <div class="book-info">
+                <h3>BLADE: VOLUME I</h3>
+                <div class="info-item">
+                    <h4>What You Get</h4>
+                    <p>Physical paperback edition with premium cover design, high-quality printing, and 220+ pages of non-stop action</p>
+                </div>
+                <div class="info-item">
+                    <h4>Why This Book?</h4>
+                    <p>Written by a young Bangladeshi author inspired by anime classics. Features epic battles, deep character development, and references to your favorite series</p>
+                </div>
+                <div class="info-item">
+                    <h4>Perfect For</h4>
+                    <p>Fans of Naruto, Bleach, Jujutsu Kaisen, and action-packed manga. If you love intense battles and compelling storylines, this is for you</p>
+                </div>
+                <div class="price-tag">৳499</div>
+                <button class="buy-btn" id="openModal">BUY NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>COMPLETE YOUR ORDER</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="+880...">
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <textarea id="address" rows="3" required placeholder="Enter your complete shipping address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryLocation">Delivery Location</label>
+                    <select id="deliveryLocation" required>
+                        <option value="">Select your area</option>
+                        <option value="all_country">All Country - ৳99 Delivery Fee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="promo">Promo Code (Optional)</label>
+                    <input type="text" id="promo" placeholder="Enter promo code">
+                    <div id="promoMessage" class="promo-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <select id="quantity" required>
+                        <option value="1">1 Copy</option>
+                        <option value="2">2 Copies</option>
+                        <option value="3">3 Copies</option>
+                        <option value="4">4 Copies</option>
+                        <option value="5">5 Copies</option>
+                    </select>
+                </div>
+                
+                <div class="price-breakdown">
+                    <div class="price-item">
+                        <span class="price-label">Book Price (x<span id="quantityDisplay">1</span>):</span>
+                        <span class="price-value" id="bookPriceDisplay">৳499</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Delivery Fee:</span>
+                        <span class="price-value" id="deliveryFeeDisplay">৳0</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Subtotal:</span>
+                        <span class="price-value" id="subtotalDisplay">৳499</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label">Discount:</span>
+                        <span class="price-value" id="discountDisplay">-৳0</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label price-total">Total Amount:</span>
+                        <span class="price-value price-total" id="totalPriceDisplay">৳499</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="cta-btn" style="width: 100%; margin-top: 1rem;" id="submitOrder">
+                    <span id="submitText">CONFIRM ORDER</span>
+                    <span id="submitLoading" class="loading" style="display: none;"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successPopup" class="success-popup">
+        <div class="success-content">
+            <span class="close-success" id="closeSuccess">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="success-title">ORDER CONFIRMED!</h2>
+            <p class="success-message">Thank you for your purchase! Your journey into the world of Blade begins soon.</p>
+            
+            <div class="order-details">
+                <div class="order-detail-item">
+                    <span class="detail-label">Order ID:</span>
+                    <span class="detail-value" id="successOrderId">BLD-0000</span>
+                </div>
+                <div class="order-detail-item">
+                    <span class="detail-label">Customer Name:</span>
+                    <span class="detail-value" id="successCustomerName">John Doe</span>
+                </div>
+                <div class="order-detail-item">
+                    <span class="detail-label">Quantity:</span>
+                    <span class="detail-value" id="successQuantity">1 Copy</span>
+                </div>
+                <div class="order-detail-item">
+                    <span class="detail-label">Delivery Fee:</span>
+                    <span class="detail-value" id="successDeliveryFee">৳0</span>
+                </div>
+                <div class="order-detail-item">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value" id="successFinalPrice">৳499</span>
+                </div>
+                <div class="order-detail-item">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value" id="successStatus">Pending</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1rem; font-style: italic; color: var(--light-gray); font-size: 0.9rem;">
+                You will receive a confirmation email shortly with tracking information.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Blade Series by Rupom. All Rights Reserved.</p>
+            <p style="color: var(--blood-red); font-style: italic; margin-top: 0.5rem;">"Made with ❤️ by Ahanaf Sharier Alif."</p>
+            <div class="social-links">
+                <a href="https://twitter.com/SOON"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/theo_07_r/"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.gg/SOON"><i class="fab fa-discord"></i></a>
+                <a href="https://www.facebook.com/ruicrackerman"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    
+    AOS.init({ duration: 1000, once: true, offset: 100 });
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+            
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('nav')) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+
+    const modal = document.getElementById('orderModal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+    const successPopup = document.getElementById('successPopup');
+    const closeSuccess = document.getElementById('closeSuccess');
+
+    openBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        resetForm();
+    });
+
+    closeSuccess.addEventListener('click', () => {
+        successPopup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetForm();
+        }
+        if (e.target === successPopup) {
+            successPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+   
+    const orderForm = document.getElementById('orderForm');
+    const quantitySelect = document.getElementById('quantity');
+    const deliveryLocationSelect = document.getElementById('deliveryLocation');
+    const promoInput = document.getElementById('promo');
+    const promoMessage = document.getElementById('promoMessage');
+    const submitBtn = document.getElementById('submitOrder');
+    const submitText = document.getElementById('submitText');
+    const submitLoading = document.getElementById('submitLoading');
+
+    
+    const quantityDisplay = document.getElementById('quantityDisplay');
+    const bookPriceDisplay = document.getElementById('bookPriceDisplay');
+    const deliveryFeeDisplay = document.getElementById('deliveryFeeDisplay');
+    const subtotalDisplay = document.getElementById('subtotalDisplay');
+    const discountDisplay = document.getElementById('discountDisplay');
+    const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+
+
+    const successOrderId = document.getElementById('successOrderId');
+    const successCustomerName = document.getElementById('successCustomerName');
+    const successQuantity = document.getElementById('successQuantity');
+    const successDeliveryFee = document.getElementById('successDeliveryFee');
+    const successFinalPrice = document.getElementById('successFinalPrice');
+    const successStatus = document.getElementById('successStatus');
+
+
+    let dynamicBookPrice = 499;
+    let dynamicDeliveryFee = 99;
+    const deliveryFees = { 'all_country': 99 };
+
+    let currentPromo = null;
+    let currentDeliveryFee = 0;
+
+
+    async function loadPricing() {
+        try {
+            const response = await fetch('/api/pricing/public');
+            const data = await response.json();
+            
+            if (data.success) {
+                dynamicBookPrice = data.pricing.bookPrice;
+                dynamicDeliveryFee = data.pricing.deliveryFee;
+                
+
+                const priceTag = document.querySelector('.price-tag');
+                if (priceTag) {
+                    priceTag.textContent = `৳${dynamicBookPrice}`;
+                }
+                
+
+                const deliveryOption = document.querySelector('#deliveryLocation option[value="all_country"]');
+                if (deliveryOption) {
+                    deliveryOption.textContent = `All Country - ৳${dynamicDeliveryFee} Delivery Fee`;
+                }
+                
+
+                deliveryFees.all_country = dynamicDeliveryFee;
+                
+
+                updatePrices();
+            }
+        } catch (error) {
+            console.error('Error loading pricing:', error);
+        }
+    }
+
+    quantitySelect.addEventListener('change', updatePrices);
+    deliveryLocationSelect.addEventListener('change', updatePrices);
+    promoInput.addEventListener('input', debounce(validatePromoCode, 500));
+
+    function updatePrices() {
+        const quantity = parseInt(quantitySelect.value);
+        const deliveryLocation = deliveryLocationSelect.value;
+        
+        quantityDisplay.textContent = quantity;
+        
+        const bookPrice = quantity * dynamicBookPrice;
+        bookPriceDisplay.textContent = `৳${bookPrice}`;
+        
+        currentDeliveryFee = deliveryFees[deliveryLocation] || 0;
+        deliveryFeeDisplay.textContent = `৳${currentDeliveryFee}`;
+        
+        const subtotal = bookPrice + currentDeliveryFee;
+        subtotalDisplay.textContent = `৳${subtotal}`;
+        
+        let discountAmount = 0;
+        let totalAmount = subtotal;
+        
+        if (currentPromo) {
+            if (currentPromo.discountType === 'percentage') {
+                discountAmount = subtotal * (currentPromo.discount / 100);
+            } else {
+                discountAmount = currentPromo.discount;
+            }
+            discountAmount = Math.min(discountAmount, subtotal);
+            totalAmount = subtotal - discountAmount;
+        }
+        
+        discountDisplay.textContent = `-৳${Math.round(discountAmount)}`;
+        totalPriceDisplay.textContent = `৳${Math.round(totalAmount)}`;
+    }
+
+    async function validatePromoCode() {
+        const code = promoInput.value.trim();
+        
+        if (!code) {
+            currentPromo = null;
+            promoMessage.textContent = '';
+            promoMessage.className = 'promo-message';
+            updatePrices();
+            return;
+        }
+
+        promoMessage.textContent = 'Validating...';
+        promoMessage.className = 'promo-message';
+
+        try {
+            const response = await fetch('/api/promos/validate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                currentPromo = data.promo;
+                promoMessage.textContent = `Promo code applied! ${data.promo.discount}${data.promo.discountType === 'percentage' ? '%' : '৳'} discount`;
+                promoMessage.className = 'promo-message promo-success';
+            } else {
+                currentPromo = null;
+                promoMessage.textContent = data.message || 'Invalid promo code';
+                promoMessage.className = 'promo-message promo-error';
+            }
+        } catch (error) {
+            currentPromo = null;
+            promoMessage.textContent = 'Error validating promo code';
+            promoMessage.className = 'promo-message promo-error';
+        }
+
+        updatePrices();
+    }
+
+    orderForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = this.querySelector('#name').value.trim();
+        const email = this.querySelector('#email').value.trim();
+        const phone = this.querySelector('#phone').value.trim();
+        const address = this.querySelector('#address').value.trim();
+        const deliveryLocation = this.querySelector('#deliveryLocation').value;
+        const quantity = this.querySelector('#quantity').value;
+        const promoCode = this.querySelector('#promo').value.trim();
+
+        if (!name || !email || !phone || !address || !deliveryLocation || !quantity) {
+            alert('Please fill all required fields.');
+            return;
+        }
+
+        submitText.style.display = 'none';
+        submitLoading.style.display = 'inline-block';
+        submitBtn.disabled = true;
+
+        try {
+            const bookPrice = quantity * dynamicBookPrice;
+            const deliveryFee = deliveryFees[deliveryLocation] || 0;
+            let subtotal = bookPrice + deliveryFee;
+            let finalPrice = subtotal;
+
+            if (currentPromo) {
+                let discountAmount = 0;
+                if (currentPromo.discountType === 'percentage') {
+                    discountAmount = subtotal * (currentPromo.discount / 100);
+                } else {
+                    discountAmount = currentPromo.discount;
+                }
+                discountAmount = Math.min(discountAmount, subtotal);
+                finalPrice = subtotal - discountAmount;
+            }
+
+            const orderResponse = await fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name, email, phone, address, deliveryLocation,
+                    quantity: parseInt(quantity),
+                    promoCode: promoCode || null,
+                    deliveryFee: deliveryFee,
+                    finalPrice: Math.round(finalPrice)
+                })
+            });
+
+            const orderData = await orderResponse.json();
+
+            if (orderData.success) {
+                if (promoCode && currentPromo) {
+                    try {
+                        await fetch(`/api/promos/${promoCode}/use`, { method: 'POST' });
+                    } catch (error) {
+                        console.error('Error updating promo usage:', error);
+                    }
+                }
+
+                showSuccessPopup(name, quantity, deliveryFee, finalPrice, orderData.order);
+                resetForm();
+                modal.style.display = 'none';
+            } else {
+                throw new Error('Failed to place order');
+            }
+        } catch (error) {
+            console.error('Error submitting order:', error);
+            alert('Error submitting order. Please try again.');
+        } finally {
+            submitText.style.display = 'inline';
+            submitLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+
+    function showSuccessPopup(name, quantity, deliveryFee, finalPrice, order) {
+        successCustomerName.textContent = name;
+        successOrderId.textContent = order.id || 'BLD-' + Math.floor(1000 + Math.random() * 9000);
+        successQuantity.textContent = quantity + (quantity === '1' ? ' Copy' : ' Copies');
+        successDeliveryFee.textContent = '৳' + deliveryFee;
+        successFinalPrice.textContent = '৳' + Math.round(finalPrice);
+        successStatus.textContent = order.status || 'Pending';
+        
+        successPopup.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function resetForm() {
+        orderForm.reset();
+        currentPromo = null;
+        promoMessage.textContent = '';
+        promoMessage.className = 'promo-message';
+        currentDeliveryFee = 0;
+        updatePrices();
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), wait);
+        };
+    }
+
+
+    const lightning = document.querySelector('.lightning');
+    function flashLightning() {
+        lightning.style.opacity = 1;
+        setTimeout(() => lightning.style.opacity = 0, 100);
+        setTimeout(flashLightning, Math.random() * 5000 + 2000);
+    }
+    
+
+    loadPricing();
+    flashLightning();
+</script>

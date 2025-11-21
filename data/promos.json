@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1763745354662",
+    "code": "TEST",
+    "discount": 50,
+    "discountType": "percentage",
+    "expiryDate": null,
+    "usageLimit": null,
+    "timesUsed": 0,
+    "description": "",
+    "active": true,
+    "createdAt": "2025-11-21T17:15:54.662Z"
+  }
+]
